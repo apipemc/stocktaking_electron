@@ -1,0 +1,68 @@
+{
+  "name": "stocktaking",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Andres Felipe Martinez Cordero <andrepipemc@gmail.com>",
+  "homepage": "./",
+  "main": "public/electron.js",
+  "dependencies": {
+    "electron-is-dev": "^1.0.1",
+    "react": "^16.6.3",
+    "react-dev-utils": "^6.1.1",
+    "react-dom": "^16.6.3",
+    "react-scripts": "2.1.1"
+  },
+  "scripts": {
+    "start": "concurrently \"cross-env BROWSER=none yarn react-scripts start\" \"wait-on http://localhost:3000 && electron .\"",
+    "pack": "electron-builder --dir",
+    "dist": "npx build --x64 --macos --win --linux --c.extraMetadata.main=build/electron.js -p always",
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
+    "electron": "^3.0.10",
+    "electron-builder": "^20.36.2",
+    "electron-devtools-installer": "^2.2.4",
+    "wait-on": "^3.2.0"
+  },
+  "build": {
+    "appId": "com.andresfelipemartinezcordero.stacktaking",
+    "compression": "normal",
+    "productName": "Stocktaking",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "mac": {
+      "icon": "assets/icon.icns",
+      "type": "distribution",
+      "target": [
+        "pkg",
+        "dmg",
+        "mas"
+      ],
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "linux": {
+      "icon": "assets/icon.png",
+      "target": [
+        "snap",
+        "AppImage"
+      ],
+      "description": "Example",
+      "category": "Network;Productivity"
+    }
+  },
+  "browserslist": []
+}
